@@ -8,6 +8,7 @@ Compiler for flipbook language written in javascript
 ## setup   
 clone the package    
 Run `cd flipbook`   
+Run `npm install -g`   
 Run `npm link`      
 `flipc` compiler will be installed
 
