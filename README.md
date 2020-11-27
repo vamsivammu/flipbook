@@ -38,7 +38,8 @@ It generates output.gif in the same directory
     There is a sample flip file in the `example` folder and the images required to run the file are also given.
     
 ## demo gif
-[demo](example/demo_flip.gif)  
+![demo](example/demo_flip.gif)   
+![demo code run](flipdemo.gif)
 
 
 
