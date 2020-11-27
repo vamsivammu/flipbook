@@ -1,0 +1,27 @@
+page (0,5) 1
+pos (0,60) scale (1) fr1.png
+page (6,10) 1
+pos (0,70) scale (1) fr2.png
+page (11,15) 1
+pos (0,80) scale (1) fr3.png
+page (16,20) 4
+pos (0,0) scale (1) fr4.png
+pos (100,100) scale (0.25) fr13.png
+pos (0,100) scale (0.5) fr14.png
+pos (400,500) scale (0.25) fr15.png
+page (21,25) 1
+pos (0,0) scale (1) fr5.png
+page (26,30) 1
+pos (0,0) scale (1) fr6.png
+page (31,35) 1
+pos (0,0) scale (1) fr7.png
+page (36,38) 1
+pos (0,0) scale (1) fr8.png
+page (39,40) 1
+pos (0,0) scale (1) fr9.png
+page (41,43) 1
+pos (0,0) scale (1) fr10.png
+page (44,45) 1
+pos (0,0) scale (1) fr11.png
+page (46,50) 1
+pos (0,0) scale (1) fr12.png

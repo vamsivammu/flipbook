@@ -1,0 +1,19 @@
+{
+  "name": "flipbook",
+  "version": "1.0.0",
+  "description": "flipbook compiler",
+  "main": "index.js",
+  "bin": {
+    "flipc": "./bin/flipc.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^2.6.1",
+    "esm": "^3.2.25",
+    "gif-encoder-2": "^1.0.5"
+  }
+}
