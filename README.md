@@ -5,8 +5,8 @@ Compiler for flipbook language written in javascript
 [gif-encoder-2](https://www.npmjs.com/package/gif-encoder-2/)   
 [canvas](https://www.npmjs.com/package/canvas/)   
 
-##setup
-clone the package   
+## setup   
+clone the package    
 Run `cd flipbook`   
 Run `npm link`      
 `flipc` compiler will be installed
