@@ -1,11 +1,11 @@
 size (600,600)
-frame_rate (1)
+frame_rate (25)
 page (0,5) 1
-pos (0,60) scale (1) fr1.png
+pos (0,0) scale (1) fr1.png
 page (6,10) 1
-pos (0,70) scale (1) fr2.png
+pos (0,0) scale (1) fr2.png
 page (11,15) 1
-pos (0,80) scale (1) fr3.png
+pos (0,0) scale (1) fr3.png
 page (16,20) 1
 pos (0,0) scale (1) fr4.png
 page (21,25) 1
