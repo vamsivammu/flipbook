@@ -30,7 +30,7 @@ It generates output.gif in the same directory
 `scale(z)` = amount by which the image has to be scaled. z is a positive floating number    
 `image_file_name` = file name of the image    
  
- ## Additional Parameters
+ ## Optional Parameters
  `size (x,y)` = For specifying the dimensions of gif file. x and y are positive integers. Default `800x800`     
  `frame_rate (z)` = For specifying the framerate of gif. default 30 frames per second.  
   These have to be specified at the top of flip file     
