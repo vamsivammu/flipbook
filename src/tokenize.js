@@ -1,73 +1,17 @@
 const fs = require('fs')
-const readLine = require('readline');
 const { Instruction } = require('./Instruction');
 const { FlipImage } = require('./FlipImage')
+const {check_int,parse_img,parse_range,parse_scale, check_gif_size, check_frame_rate} = require('./parser')
 const path = require('path')
-var number_patt = /^[0-9]+$/
-var float_patt = /^[0-9]+[.][0-9]+$/
+
 var err =  (line_no,exp)=>{
     return "Error at "+line_no + ". Expected "+exp;
 }
 
-var check_int = (str)=>{
-    if(str.match(number_patt)){
-        return true;
-    }
-    return false;
-}
-
-var check_float = (str)=>{
-    if(str.match(float_patt)){
-        return true;
-    }
-    return false;
-}
-
-var parse_range = (rng_str)=>{
-    var sliced = rng_str.slice(1,rng_str.length-1);
-    var tkns = sliced.split(",");
-    if(tkns.length!=2){
-        return [-1,-1];
-    }
-    if(check_int(tkns[0]) && check_int(tkns[1])){
-        return [parseInt(tkns[0]),parseInt(tkns[1])];
-    }
-    return [-1,-1];
-}
-
-var parse_scale = (scl_str)=>{
-    var sliced = scl_str.slice(1,scl_str.length-1);
-    var is_int = check_int(sliced);
-    if(is_int){
-        var scale = parseInt(sliced,10);
-        if(scale==0) return -1;
-        return scale;
-    }
-    var is_float = check_float(sliced);
-    if(is_float){
-        var scale = parseFloat(sliced);
-        if(scale<=0) return -1;
-        return scale;
-    }
-    return -1;
-}
-
-var parse_img = (img_str)=>{
-    var img_name_tokens = img_str.split('.');
-    if(img_name_tokens.length!=2){
-        return -1;
-    }
-    var ext = img_name_tokens[1];
-    if(ext=='jpg' || ext=='jpeg' || ext=='png'){
-        return img_str;
-    }
-    return -1;
-}
 
 var tokenize = (args)=>{
     var filename = args[0];
-    var filepath = path.join(process.cwd() + filename);
-
+    var filepath = path.join(process.cwd()+ '/' + filename);
     var lines = [];
     var notfound = false;
     try{
@@ -77,17 +21,29 @@ var tokenize = (args)=>{
     }
         if(notfound) throw "File not found";
         var instructions = []
-        
         var prevr = -1;
-        console.log(filepath)
-        
-        
         var line_ind = 0;
+        let [size_x,size_y] = check_gif_size(lines[0]);
+        if(size_x!=-1){
+            line_ind++;
+        }else{
+            size_x=800;size_y=800;
+        }
+        let fr = check_frame_rate(lines[line_ind]);
+        if(fr!=-1){
+            line_ind++;
+        }
         while(line_ind<lines.length){
             var line = lines[line_ind];
             line = line.trim();
             var tokens = line.split(" ");
-            
+            if(line==''){
+                line_ind++;
+                continue;
+            }
+            if(tokens.length!=3){
+                throw err(line_ind+1,"page (x,y) number_of_images");
+            }
             if(tokens[0]=="page"){
                 let [left,right] = parse_range(tokens[1]);
                 if(left==-1){
@@ -141,9 +97,10 @@ var tokenize = (args)=>{
                 throw err(line_ind+1,"Page function with left and right indices")
             }
         }
-        console.log(instructions.length)
-        return instructions;
-    
+        if(instructions.length==0){
+            throw "expected atleast one page with one image";
+        }
+        return [instructions,size_x,size_y,fr];
 
     
 }
