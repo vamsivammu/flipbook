@@ -13,7 +13,10 @@ Run `npm link`
 
 ## Running the `flip` file    
 Run `flipc test.flip -o output.gif`   
-It generates output.gif in the same directory   
+`test.flip` is the flip file that we want to run
+`output.gif` is the final gif that will be created in the same directory. 
+ 
+
 
 ## syntax for `flip` language
 `page (left,right) n`   
@@ -41,10 +44,18 @@ It generates output.gif in the same directory
 
 ## multiple image gif
 ![apple falling](example/apple.gif)    
+For running apple.flip    
+`cd example`  
+`flipc apple.flip -o output.gif`   
+
 
 ## demo gif   
 ![demo](example/demo_flip.gif)    
-![demo code run](flipdemo.gif)    
+![demo code run](flipdemo.gif)   
+
+For running test.flip    
+`cd example`  
+`flipc test.flip -o output.gif`   
 
 
 
